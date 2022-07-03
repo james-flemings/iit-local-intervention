@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": true,
+    "[python]":{
+        "editor.wordBasedSuggestions": false,
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.defaultFormatter": "xaver.clang-format",
+        "editor.tabSize": 2 
+    },
+}
