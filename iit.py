@@ -8,6 +8,9 @@ def generate_data(num_examples=500, num_addends=4, embed_dim=50, seed=0, lower=-
     addends = np.array([np.random.randint(low=lower, high=upper, size=num_addends) for _ in range(num_examples)])
     sums = np.array([np.sum(addends[i]) for i in range(num_examples)])
 
+    return addends, sums
+
+    '''
     addends_one_hot = []
     sums_one_hot = [] 
 
@@ -15,6 +18,7 @@ def generate_data(num_examples=500, num_addends=4, embed_dim=50, seed=0, lower=-
     sums_one_hot = np.array([one_hot_encode(sum, num_addends * lower, num_addends * upper)  for sum in sums])
 
     return addends_one_hot, sums_one_hot
+    '''
 
 def one_hot_encode(addend, lower=-10, upper=10):
     one_hot_addend = np.zeros(abs(lower) + abs(upper) + 1)
