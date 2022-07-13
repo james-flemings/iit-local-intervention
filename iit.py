@@ -1,24 +1,14 @@
 import torch
 import random
 import numpy as np
+import itertools
 
-
-def generate_data(num_examples=500, num_addends=4, seed=0, lower=0, upper=30):
+def generate_data(ran: list[int], num_addends: int = 4, seed: int = 0):
     random.seed(seed)
-    addends = [np.random.randint(low=lower, high=upper, size=num_addends) for _ in range(num_examples)]
-    sums = [np.sum(addends[i]) for i in range(num_examples)]
+    addends = list(itertools.product(ran, repeat=num_addends))
+    sums = [np.sum(addend) for addend in addends]
 
     return addends, sums
-
-    '''
-    addends_one_hot = np.array([np.array([one_hot_encode(addend, lower, upper) for addend in addends[i]]) for i in range(num_examples)])
-    sums_one_hot = np.array([one_hot_encode(sum, num_addends * lower, num_addends * upper)  for sum in sums])
-
-    return addends_one_hot, sums_one_hot
-    '''
-
-    #sums_one_hot = torch.tensor([one_hot_encode(sum, num_addends * lower, num_addends * upper)  for sum in sums])
-    #return torch.tensor(addends), sums_one_hot
 
 
 def one_hot_encode(addend, lower=-10, upper=10):
